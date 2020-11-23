@@ -11,6 +11,17 @@ public class Main {
         int sudokuLenght =  scanner.nextInt();
 
 
+        //eğer iyi bir satır sayısı değilse tekrar girilmeli
+        //örnek :eğer uzunluk 81 ise 9x9(9 tane 9 luk grup)) ,geçerli
+        //örnek :12 3.46x3.46 gibi bir sayı yani tam sayı değil net birşekilde gruplandıramayız, geçersiz !
+        while ( (int)Math.sqrt(sudokuLenght) != Math.sqrt(sudokuLenght)){
+            System.out.println("Lütfen geçerli satır sayısı giriniz");
+            sudokuLenght = scanner.nextInt();
+        }
+
+
+
+
         SudokuCreater sudokuCreater = new SudokuCreater(sudokuLenght);
         SudokuSolver sudokuSolver = new SudokuSolver();
 
@@ -36,6 +47,7 @@ public class Main {
     public static void print(
             int[][] grid, int N)
     {
+        System.out.println("This is solved sudoku");
 
         for (int a = 0; a < N; a++)
         {

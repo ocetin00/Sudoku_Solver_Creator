@@ -37,9 +37,34 @@ public class SudokuCreater {
          }
 
          sudoku =temp;
+         print(sudoku,sudokuLenght);
 
         return sudoku;
     }
+
+    public void print(
+            int[][] grid, int N)
+    {
+
+        System.out.println("this is sudoku problem");
+
+        for (int a = 0; a < N; a++)
+        {
+            for (int b = 0; b < N; b++)
+            {
+                System.out.print(grid[a][b]);
+                System.out.print(" ");
+            }
+            System.out.println(" ");
+
+            if ((a + 1) % (int)Math.sqrt(N) == 0)
+            {
+                System.out.print("");
+            }
+        }
+        System.out.println("");
+    }
+
 
 
 }
