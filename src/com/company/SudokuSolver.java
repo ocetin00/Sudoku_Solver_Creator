@@ -3,7 +3,7 @@ package com.company;
 public class SudokuSolver {
 
     public boolean solveSudoku(
-            int[][] grid, int n)
+            String[][] grid, int n)
     {
         int row = 0;
         int col = 0;
@@ -12,7 +12,7 @@ public class SudokuSolver {
         {
             for (int j = 0; j < n; j++)
             {
-                if (grid[i][j] == 0)
+                if (grid[i][j].equals(" "))
                 {
                     row = i;
                     col = j;
@@ -35,12 +35,14 @@ public class SudokuSolver {
             return true;
         }
 
+        String[] mString = {"c","n","g","b","i","m","1","2","3"};
+
         //deneyebileceğimiz tüm cevalar denenir
-        for (int num = 1; num <= n; num++)
+        for (String s : mString)
         {
-            if (isSafe(grid, row, col, num))
+            if (isSafe(grid, row, col, s))
             {
-                grid[row][col] = num;
+                grid[row][col] = s;
                 //recursive olarak hala boş yer olup olmadıgı kontrol edilir
                 if (solveSudoku(grid, n))
                 {
@@ -50,16 +52,16 @@ public class SudokuSolver {
                 else
                 {
                     // replace it
-                    grid[row][col] = 0;
+                    grid[row][col] = " ";
                 }
             }
         }
         return false;
     }
 
-    public  boolean isSafe(int[][] board,
+    public  boolean isSafe(String[][] board,
                                  int row, int col,
-                                 int num)
+                                 String s)
     {
         // satırda eslesme var mı?
         for (int d = 0; d < board.length; d++)
@@ -69,18 +71,18 @@ public class SudokuSolver {
             /*
             eğer zaten denediğimiz numara satırdaki numaralardan biri ise false döndür
              */
-            if (board[row][d] == num) {
+            if (board[row][d].equals(s)) {
                 return false;
             }
         }
 
-        // satırda eslesme var mı?
+        // sütünda eslesme var mı?
         for (int r = 0; r < board.length; r++)
         {
             /*
             eğer zaten denediğimiz numara sütünde numaralardan biri ise false döndür
              */
-            if (board[r][col] == num)
+            if (board[r][col].equals(s))
             {
                 return false;
             }
@@ -102,7 +104,7 @@ public class SudokuSolver {
             for (int d = boxColStart;
                  d < boxColStart + sqrt; d++)
             {
-                if (board[r][d] == num)
+                if (board[r][d].equals(s))
                 {
                     return false;
                 }

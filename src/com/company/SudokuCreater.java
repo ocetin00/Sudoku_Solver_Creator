@@ -5,7 +5,7 @@ import java.util.Random;
 public class SudokuCreater {
 
     private SudokuSolver sudokuSolver;
-    private int[][] sudoku;
+    private String[][] sudoku;
     private int sudokuLenght;
 
 
@@ -20,19 +20,19 @@ public class SudokuCreater {
     }
 
     //create empty array given size
-     int[][] generateSudoku() {
-        int[][] temp = new int[sudokuLenght][sudokuLenght];
+     String[][] generateSudoku() {
+        String[][] temp = new String[sudokuLenght][sudokuLenght];
         for(int i=0;i<sudokuLenght;i++){
             for(int j=0;j<sudokuLenght;j++){
-                temp[i][j] = 0;
+                temp[i][j] = " ";
             }
         }
 
          //create real sudoku problem
          sudokuSolver.solveSudoku(temp,sudokuLenght);
-         for(int i=0;i<sudokuLenght;i += (int)(Math.random() *3)){
-             for(int j=0;j<sudokuLenght;j+= (int)(Math.random() *4)){
-                 temp[i][j] = 0;
+         for(int i=0;i<sudokuLenght;i += (int)(Math.random() *2)){
+             for(int j=0;j<sudokuLenght;j+= (int)(Math.random() *3)){
+                 temp[i][j] = " ";
              }
          }
 
@@ -43,7 +43,7 @@ public class SudokuCreater {
     }
 
     public void print(
-            int[][] grid, int N)
+            String[][] grid, int N)
     {
 
         System.out.println("this is sudoku problem");
