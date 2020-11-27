@@ -35,7 +35,7 @@ public class SudokuSolver {
             return true;
         }
 
-        String[] mString = {"c","n","g","b","i","m","1","2","3"};
+        String[] mString = {"c","n","g","b","i","m","2","1","3"};
 
         //deneyebileceğimiz tüm cevalar denenir
         for (String s : mString)
@@ -59,6 +59,7 @@ public class SudokuSolver {
         return false;
     }
 
+    //konulacak eleman uygun mu ?
     public  boolean isSafe(String[][] board,
                                  int row, int col,
                                  String s)
